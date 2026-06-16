@@ -38,7 +38,7 @@ async function githubPut(path, contentBase64, message, env) {
   const res = await fetch(url, {
     method: 'PUT',
     headers: {
-      'Authorization': `token ${env.GITHUB_TOKEN}`,
+      'Authorization': `Bearer ${env.GITHUB_TOKEN}`,
       'Accept': 'application/vnd.github+json',
       'Content-Type': 'application/json',
       'X-GitHub-Api-Version': '2022-11-28'
