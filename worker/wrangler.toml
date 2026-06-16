@@ -1,0 +1,9 @@
+name = "bosch-part-queue"
+main = "index.js"
+compatibility_date = "2026-06-15"
+
+[vars]
+ALLOWED_ORIGIN = "https://fastcashsignals.github.io"
+
+# Set via: wrangler secret put GITHUB_TOKEN
+# Do NOT put the token in this file.

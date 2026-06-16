@@ -387,11 +387,8 @@
   <div class="queue-badge" id="queueBadge">Saved offline. Will auto-send when connected.</div>
 
   <script>
-    // CONFIG: paste the GitHub token here after creating a fine-grained PAT
-    // with write access to the fastcashsignals/bosch-part-queue repo.
-    const GITHUB_TOKEN = 'YOUR_TOKEN_HERE';
-    const REPO_OWNER = 'fastcashsignals';
-    const REPO_NAME = 'bosch-part-queue';
+    // CONFIG: replace with your Cloudflare Worker URL after deploying
+    const WORKER_URL = 'YOUR_WORKER_URL';
 
     const COST_CENTER_NAMES = {
       'GENERAL': 'GENERAL',
@@ -470,61 +467,12 @@
       statusEl.className = 'status';
     }
 
-    function slugify(sap) {
-      return sap.replace(/[^a-zA-Z0-9_-]/g, '').slice(0, 30);
-    }
-
-    async function githubPut(path, contentBase64, message) {
-      const url = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`;
-      const res = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Authorization': `Bearer ${GITHUB_TOKEN}`,
-          'Accept': 'application/vnd.github+json',
-          'Content-Type': 'application/json',
-          'X-GitHub-Api-Version': '2022-11-28'
-        },
-        body: JSON.stringify({
-          message,
-          content: contentBase64
-        })
-      });
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.message || `GitHub ${res.status}`);
-      }
-      return res.json();
-    }
-
-    async function sendSubmission(payload) {
-      const ts = Date.now();
-      const sap = slugify(payload.sap_id);
-      const stem = `${ts}_${sap}`;
-
-      // Upload image
-      const ext = currentPhotoMime === 'image/png' ? 'png' : 'jpg';
-      const imagePath = `submissions/images/${stem}.${ext}`;
-      await githubPut(imagePath, currentPhotoBase64, `Photo submission: ${payload.sap_id}`);
-
-      // Upload JSON record
-      const jsonPath = `submissions/data/${stem}.json`;
-      const record = {
-        ...payload,
-        submitted_at: new Date().toISOString(),
-        image_path: imagePath
-      };
-      const jsonContent = btoa(unescape(encodeURIComponent(JSON.stringify(record, null, 2))));
-      await githubPut(jsonPath, jsonContent, `Part submission: ${payload.sap_id}`);
-
-      return { imagePath, jsonPath };
-    }
-
     form.addEventListener('submit', async e => {
       e.preventDefault();
       clearStatus();
 
-      if (GITHUB_TOKEN === 'YOUR_TOKEN_HERE') {
-        setStatus('App not configured yet. Token needs to be pasted in.', 'error');
+      if (WORKER_URL === 'YOUR_WORKER_URL') {
+        setStatus('App not configured yet. Worker URL needs to be set.', 'error');
         return;
       }
 
@@ -551,7 +499,9 @@
         bin: bin || null,
         manufacturer: document.getElementById('manufacturer').value.trim() || null,
         model_number: document.getElementById('modelNumber').value.trim() || null,
-        description: document.getElementById('description').value.trim() || null
+        description: document.getElementById('description').value.trim() || null,
+        image_base64: currentPhotoBase64,
+        image_mime: currentPhotoMime
       };
 
       submitBtn.disabled = true;
@@ -559,7 +509,15 @@
       submitBtn.innerHTML = '<span class="spinner"></span>Sending...';
 
       try {
-        await sendSubmission(payload);
+        const res = await fetch(WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.error || `Server error ${res.status}`);
+        }
         setStatus('Submitted. It will be reviewed and added to Part Scout.', 'success');
         form.reset();
         photoClear.click();
