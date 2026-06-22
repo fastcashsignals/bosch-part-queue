@@ -5,7 +5,7 @@
  * photo + JSON into the fastcashsignals/bosch-part-queue GitHub repo.
  *
  * Required environment variables:
- *  - GITHUB_TOKEN: classic PAT with repo scope (read/write Contents on bosch-part-queue)
+ *  - GITHUB_TOKEN: fine-grained PAT with read/write Contents on bosch-part-queue
  *  - ALLOWED_ORIGIN: optional, defaults to "https://fastcashsignals.github.io"
  */
 
@@ -38,7 +38,7 @@ async function githubPut(path, contentBase64, message, env) {
   const res = await fetch(url, {
     method: 'PUT',
     headers: {
-      'Authorization': `Bearer ${env.GITHUB_TOKEN}`,
+      'Authorization': `token ${env.GITHUB_TOKEN}`,
       'Accept': 'application/vnd.github+json',
       'Content-Type': 'application/json',
       'X-GitHub-Api-Version': '2022-11-28',
