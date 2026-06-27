@@ -21,6 +21,21 @@
       --accent-dim: #00d4aa22;
       --danger: #ff4757;
       --warning: #ffa502;
+      --select-arrow: %23888;
+    }
+
+    [data-theme="light"] {
+      --bg: #f4f4f4;
+      --surface: #ffffff;
+      --surface-hover: #ebebeb;
+      --border: #d4d4d4;
+      --text: #111111;
+      --text-secondary: #666666;
+      --accent: #009e80;
+      --accent-dim: #00d4aa22;
+      --danger: #d93040;
+      --warning: #d08000;
+      --select-arrow: %23666;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -51,9 +66,9 @@
     }
 
     .logo {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
       overflow: hidden;
       flex-shrink: 0;
       background: var(--surface);
@@ -63,8 +78,8 @@
 
     .logo img { width: 100%; height: 100%; object-fit: cover; }
 
-    .title { font-size: 22px; font-weight: 800; letter-spacing: -0.4px; }
-    .subtitle { font-size: 11px; color: var(--text-secondary); margin-top: -2px; }
+    .title { font-size: 28px; font-weight: 800; letter-spacing: -0.4px; }
+    .subtitle { font-size: 13px; color: var(--text-secondary); margin-top: -2px; }
 
     .form {
       padding: 16px;
@@ -117,6 +132,10 @@
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23888'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 14px center;
+    }
+
+    [data-theme="light"] select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23666'%3E%3Cpath d='M4 6l4 4 4-4'/%3E%3C/svg%3E");
     }
 
     textarea {
@@ -275,6 +294,28 @@
     }
 
     .queue-badge.show { display: block; }
+
+    .theme-toggle {
+      margin-left: auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 6px 12px;
+      color: var(--text-secondary);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+      flex-shrink: 0;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--accent);
+      color: var(--text);
+    }
   </style>
 </head>
 <body>
@@ -285,6 +326,10 @@
         <div class="title">Bosch Part Queue</div>
         <div class="subtitle">Submit a part for the scout app</div>
       </div>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light</span>
+      </button>
     </div>
   </div>
 
@@ -549,6 +594,35 @@
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+    const themeMeta = document.querySelector('meta[name="theme-color"]');
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      if (theme === 'light') {
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark';
+        if (themeMeta) themeMeta.content = '#f4f4f4';
+      } else {
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light';
+        if (themeMeta) themeMeta.content = '#0f0f0f';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') ||
+      (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      applyTheme(current === 'light' ? 'dark' : 'light');
+    });
   </script>
 </body>
 </html>
