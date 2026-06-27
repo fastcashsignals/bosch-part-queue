@@ -1,0 +1,44 @@
+name: Promote submissions to catalog
+
+# When the Worker commits a new submission into submissions/data/, copy the
+# part (and its photo) into the Bosch Part Scout catalog so it is searchable
+# immediately.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'submissions/data/**'
+  workflow_dispatch:
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout queue repo
+        uses: actions/checkout@v4
+        with:
+          path: queue
+
+      - name: Checkout scout (catalog) repo
+        uses: actions/checkout@v4
+        with:
+          repository: fastcashsignals/bosch-part-scout
+          token: ${{ secrets.SCOUT_REPO_TOKEN }}
+          path: scout
+
+      - name: Promote new submissions
+        run: python3 queue/scripts/promote_submissions.py
+
+      - name: Commit and push catalog changes
+        working-directory: scout
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add parts.json images
+            git commit -m "Add submitted part(s) to catalog [auto]"
+            git push
+          else
+            echo "No new submissions to promote."
+          fi
