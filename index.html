@@ -143,6 +143,41 @@
       resize: vertical;
     }
 
+    .sap-input {
+      display: flex;
+      align-items: stretch;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .sap-input:focus-within { border-color: var(--accent); }
+
+    .sap-prefix {
+      display: flex;
+      align-items: center;
+      padding: 0 14px;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--text-secondary);
+      background: var(--surface-hover);
+      border-right: 1px solid var(--border);
+    }
+
+    .sap-input input {
+      border: none;
+      border-radius: 0;
+      background: transparent;
+      flex: 1;
+      font-weight: 600;
+      letter-spacing: 3px;
+    }
+
+    .sap-input input:focus { background: transparent; }
+
     .photo-area {
       position: relative;
       border: 2px dashed var(--border);
@@ -344,8 +379,11 @@
   <form class="form" id="submitForm">
     <div class="field">
       <label>SAP / Part Number <span class="required">*</span></label>
-      <input type="tel" id="sapId" inputmode="numeric" placeholder="3610003762" required>
-      <div class="helper">The number your guys look up</div>
+      <div class="sap-input">
+        <span class="sap-prefix">361000</span>
+        <input type="tel" id="sapLast4" inputmode="numeric" maxlength="4" pattern="[0-9]{4}" placeholder="3762" required>
+      </div>
+      <div class="helper">Just the last 4 digits &mdash; 361000 is added automatically</div>
     </div>
 
     <div class="field">
@@ -526,12 +564,18 @@
         return;
       }
 
-      const sapId = document.getElementById('sapId').value.trim();
+      const last4 = document.getElementById('sapLast4').value.trim();
+      const sapId = '361000' + last4;
       const partName = document.getElementById('partName').value.trim();
       const costCenter = document.getElementById('costCenter').value;
       const bin = document.getElementById('bin').value.trim();
 
-      if (!sapId || !partName || !costCenter || !bin) {
+      if (!/^[0-9]{4}$/.test(last4)) {
+        setStatus('Enter the last 4 digits of the part number.', 'error');
+        return;
+      }
+
+      if (!partName || !costCenter || !bin) {
         setStatus('Fill in all required fields.', 'error');
         return;
       }
