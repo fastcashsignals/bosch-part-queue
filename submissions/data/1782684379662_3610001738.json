@@ -1,0 +1,12 @@
+{
+  "sap_id": "3610001738",
+  "name": "Sensor",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "bin": "01-28-B02",
+  "manufacturer": "IFM",
+  "model_number": "#MK5328",
+  "description": "Vertical slide sensor",
+  "submitted_at": "2026-06-28T22:06:19.662Z",
+  "image_path": null
+}
