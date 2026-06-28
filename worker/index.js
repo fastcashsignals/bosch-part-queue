@@ -77,6 +77,25 @@ export default {
     try {
       const body = await request.json();
 
+      // PIN-protected delete request: records a delete marker that the
+      // catalog sync turns into an actual removal.
+      if (body.action === 'delete') {
+        if (!env.DELETE_PIN || String(body.pin || '') !== String(env.DELETE_PIN)) {
+          return json({ error: 'Invalid PIN' }, 403, cors);
+        }
+        const delSap = slugify(body.sap_id);
+        if (!delSap) {
+          return json({ error: 'Missing sap_id' }, 422, cors);
+        }
+        const delStem = `${Date.now()}_${delSap}`;
+        const delPath = `submissions/deletes/${delStem}.json`;
+        const delContent = base64Encode(
+          JSON.stringify({ sap_id: delSap, deleted_at: new Date().toISOString() }, null, 2)
+        );
+        await githubPut(delPath, delContent, `Delete request: ${delSap}`, env);
+        return json({ success: true, action: 'delete', sap_id: delSap }, 200, cors);
+      }
+
       const sapId = slugify(body.sap_id);
       const partName = String(body.name || '').trim();
       const costCenter = String(body.cost_center_code || '').trim();
