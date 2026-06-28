@@ -6,13 +6,20 @@ Run from a workspace that contains two checked-out repos side by side:
   queue/  -> fastcashsignals/bosch-part-queue (this repo, with submissions/)
   scout/  -> fastcashsignals/bosch-part-scout (the catalog, with parts.json)
 
-For each submission in queue/submissions/data/*.json whose sap_id is NOT
-already in scout/parts.json, the part is appended to the catalog and its
-photo is copied into scout/images/<sap_id>.<ext>.
+For each part, the LATEST submission (by timestamp) is used:
 
-Parts that already exist in the catalog are skipped, so manual edits to
-parts.json (e.g. moving a part to a different cost center) are never
-overwritten by a later sync.
+  * New part (sap_id not in the catalog): the full record is appended and
+    its photo copied into scout/images/<sap_id>.<ext>.
+
+  * Existing part: only the PHOTO is updated (copied in and the image field
+    refreshed). All other fields are left as-is, so manual catalog edits
+    (e.g. moving a part to a different cost center) are never overwritten.
+    This is what lets a tech add or replace a photo later by submitting the
+    same part again.
+
+The image field carries a "?v=<timestamp>" cache-buster so a replaced photo
+shows up on devices instead of the old cached copy. The script is
+idempotent: re-running with no new submissions produces no changes.
 """
 
 import glob
@@ -40,44 +47,78 @@ FIELDS = [
 ]
 
 
+def submission_ts(json_file):
+    """Worker names files <ms-timestamp>_<sap>.json; use that for ordering."""
+    base = os.path.basename(json_file)
+    head = base.split("_", 1)[0]
+    return int(head) if head.isdigit() else 0
+
+
+def latest_per_sap():
+    """Return {sap_id: (ts, record)} keeping only the newest submission."""
+    latest = {}
+    for json_file in glob.glob(os.path.join(DATA_DIR, "*.json")):
+        try:
+            with open(json_file) as f:
+                rec = json.load(f)
+        except (OSError, ValueError):
+            continue
+        sap = rec.get("sap_id")
+        if not sap:
+            continue
+        ts = submission_ts(json_file)
+        if sap not in latest or ts > latest[sap][0]:
+            latest[sap] = (ts, rec)
+    return latest
+
+
+def copy_photo(rec, sap, ts):
+    """Copy the submission photo into the catalog; return the image field."""
+    src_rel = rec.get("image_path")
+    if not src_rel:
+        return None
+    src_img = os.path.join(QUEUE, src_rel)
+    if not os.path.isfile(src_img):
+        return None
+    ext = os.path.splitext(src_img)[1] or ".jpg"
+    dst_rel = f"images/{sap}{ext}"
+    shutil.copyfile(src_img, os.path.join(SCOUT, dst_rel))
+    return f"{dst_rel}?v={ts}"
+
+
 def main():
     with open(PARTS_PATH) as f:
         parts = json.load(f)
 
-    existing = {p.get("sap_id") for p in parts if p.get("sap_id")}
+    by_sap = {p.get("sap_id"): p for p in parts if p.get("sap_id")}
     os.makedirs(SCOUT_IMAGES, exist_ok=True)
 
     added = 0
-    for json_file in sorted(glob.glob(os.path.join(DATA_DIR, "*.json"))):
-        with open(json_file) as f:
-            rec = json.load(f)
+    updated = 0
+    for sap, (ts, rec) in latest_per_sap().items():
+        if sap in by_sap:
+            # Existing part: refresh the photo only, leave other fields alone.
+            image_field = copy_photo(rec, sap, ts)
+            if image_field and by_sap[sap].get("image") != image_field:
+                by_sap[sap]["image"] = image_field
+                updated += 1
+                print(f"Updated photo {sap} - {by_sap[sap].get('name')}")
+        else:
+            # New part: add the full record.
+            entry = {key: rec.get(key) for key in FIELDS}
+            image_field = copy_photo(rec, sap, ts)
+            if image_field:
+                entry["image"] = image_field
+            parts.append(entry)
+            by_sap[sap] = entry
+            added += 1
+            print(f"Added {sap} - {rec.get('name')}")
 
-        sap = rec.get("sap_id")
-        if not sap or sap in existing:
-            continue
-
-        entry = {key: rec.get(key) for key in FIELDS}
-
-        # Copy the photo into the catalog if present.
-        src_rel = rec.get("image_path")
-        if src_rel:
-            src_img = os.path.join(QUEUE, src_rel)
-            if os.path.isfile(src_img):
-                ext = os.path.splitext(src_img)[1] or ".jpg"
-                dst_rel = f"images/{sap}{ext}"
-                shutil.copyfile(src_img, os.path.join(SCOUT, dst_rel))
-                entry["image"] = dst_rel
-
-        parts.append(entry)
-        existing.add(sap)
-        added += 1
-        print(f"Added {sap} - {rec.get('name')}")
-
-    if added:
+    if added or updated:
         with open(PARTS_PATH, "w") as f:
             f.write(json.dumps(parts, indent=2) + "\n")
 
-    print(f"{added} part(s) promoted to catalog.")
+    print(f"{added} part(s) added, {updated} photo(s) updated.")
 
 
 if __name__ == "__main__":
