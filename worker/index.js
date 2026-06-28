@@ -106,16 +106,17 @@ export default {
         return json({ error: 'Missing required fields: sap_id, name, cost_center_code, bin' }, 422, cors);
       }
 
-      if (!body.image_base64) {
-        return json({ error: 'Missing image_base64' }, 422, cors);
-      }
-
       const ts = Date.now();
       const stem = `${ts}_${sapId}`;
-      const ext = body.image_mime === 'image/png' ? 'png' : 'jpg';
-      const imagePath = `submissions/images/${stem}.${ext}`;
 
-      await githubPut(imagePath, body.image_base64, `Photo submission: ${sapId}`, env);
+      // Photo is optional: required for new parts at the form level, but an
+      // edit to an existing part can come in without one (keeps current photo).
+      let imagePath = null;
+      if (body.image_base64) {
+        const ext = body.image_mime === 'image/png' ? 'png' : 'jpg';
+        imagePath = `submissions/images/${stem}.${ext}`;
+        await githubPut(imagePath, body.image_base64, `Photo submission: ${sapId}`, env);
+      }
 
       const record = {
         sap_id: sapId,
