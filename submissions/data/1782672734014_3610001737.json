@@ -1,0 +1,12 @@
+{
+  "sap_id": "3610001737",
+  "name": "Sensor",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "bin": "01-28-B01",
+  "manufacturer": null,
+  "model_number": "MK5102",
+  "description": "Larger sensor (Robot door open and close cylinder)",
+  "submitted_at": "2026-06-28T18:52:14.979Z",
+  "image_path": "submissions/images/1782672734014_3610001737.jpg"
+}
