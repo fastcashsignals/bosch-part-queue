@@ -1,14 +1,15 @@
 name: Promote submissions to catalog
 
-# When the Worker commits a new submission into submissions/data/, copy the
-# part (and its photo) into the Bosch Part Scout catalog so it is searchable
-# immediately.
+# When the Worker commits a new submission (or a delete request), sync the
+# Bosch Part Scout catalog: add/update parts and their photos, or remove
+# parts that were deleted.
 
 on:
   push:
     branches: [main]
     paths:
       - 'submissions/data/**'
+      - 'submissions/deletes/**'
   workflow_dispatch:
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
           token: ${{ secrets.SCOUT_REPO_TOKEN }}
           path: scout
 
-      - name: Promote new submissions
+      - name: Sync submissions into the catalog
         run: python3 queue/scripts/promote_submissions.py
 
       - name: Commit and push catalog changes
@@ -36,9 +37,9 @@ jobs:
           if [ -n "$(git status --porcelain)" ]; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add parts.json images
-            git commit -m "Add submitted part(s) to catalog [auto]"
+            git add -A
+            git commit -m "Sync catalog from submissions [auto]"
             git push
           else
-            echo "No new submissions to promote."
+            echo "No catalog changes."
           fi
