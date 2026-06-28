@@ -11,11 +11,11 @@ For each part, the LATEST submission (by timestamp) is used:
   * New part (sap_id not in the catalog): the full record is appended and
     its photo copied into scout/images/<sap_id>.<ext>.
 
-  * Existing part: only the PHOTO is updated (copied in and the image field
-    refreshed). All other fields are left as-is, so manual catalog edits
-    (e.g. moving a part to a different cost center) are never overwritten.
-    This is what lets a tech add or replace a photo later by submitting the
-    same part again.
+  * Existing part: the latest submission is applied (photo + fields). The
+    Submit form pre-fills the part's current values, so a resubmission only
+    changes what the tech actually edited (commonly: adding/replacing the
+    photo). This is what lets a tech fill in a photo or fix a detail later
+    by submitting the same part again.
 
 The image field carries a "?v=<timestamp>" cache-buster so a replaced photo
 shows up on devices instead of the old cached copy. The script is
@@ -97,12 +97,18 @@ def main():
     updated = 0
     for sap, (ts, rec) in latest_per_sap().items():
         if sap in by_sap:
-            # Existing part: refresh the photo only, leave other fields alone.
-            image_field = copy_photo(rec, sap, ts)
-            if image_field and by_sap[sap].get("image") != image_field:
-                by_sap[sap]["image"] = image_field
+            # Existing part: apply the latest submission (fields + photo).
+            # The Submit form pre-fills the current values, so unchanged
+            # fields stay the same and only real edits take effect.
+            entry = {key: rec.get(key) for key in FIELDS}
+            image_field = copy_photo(rec, sap, ts) or by_sap[sap].get("image")
+            if image_field:
+                entry["image"] = image_field
+            if entry != by_sap[sap]:
+                by_sap[sap].clear()
+                by_sap[sap].update(entry)
                 updated += 1
-                print(f"Updated photo {sap} - {by_sap[sap].get('name')}")
+                print(f"Updated {sap} - {rec.get('name')}")
         else:
             # New part: add the full record.
             entry = {key: rec.get(key) for key in FIELDS}
@@ -118,7 +124,7 @@ def main():
         with open(PARTS_PATH, "w") as f:
             f.write(json.dumps(parts, indent=2) + "\n")
 
-    print(f"{added} part(s) added, {updated} photo(s) updated.")
+    print(f"{added} part(s) added, {updated} part(s) updated.")
 
 
 if __name__ == "__main__":
