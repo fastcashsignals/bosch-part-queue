@@ -6,6 +6,7 @@
  *
  * Required environment variables:
  *  - GITHUB_TOKEN: fine-grained PAT with read/write Contents on bosch-part-queue
+ *  - DELETE_PIN: PIN that must match for a delete request to be accepted
  *  - ALLOWED_ORIGIN: optional, defaults to "https://fastcashsignals.github.io"
  */
 
@@ -60,6 +61,24 @@ function slugify(sap) {
 function base64Encode(str) {
   // Cloudflare Workers support atob/btoa
   return btoa(unescape(encodeURIComponent(str)));
+}
+
+/**
+ * Normalize the optional extra cost centers a part can be used on.
+ * Accepts an array (or a single string), drops blanks and duplicates,
+ * and never repeats the primary cost center.
+ */
+function normalizeAdditionalCostCenters(raw, primary) {
+  const list = Array.isArray(raw) ? raw : (raw ? [raw] : []);
+  const seen = new Set();
+  const out = [];
+  for (const item of list) {
+    const cc = String(item || '').trim();
+    if (!cc || cc === primary || seen.has(cc)) continue;
+    seen.add(cc);
+    out.push(cc);
+  }
+  return out;
 }
 
 export default {
@@ -123,6 +142,10 @@ export default {
         name: partName,
         category: category || costCenter,
         cost_center_code: costCenter,
+        additional_cost_centers: normalizeAdditionalCostCenters(
+          body.additional_cost_centers,
+          costCenter
+        ),
         bin: bin || null,
         manufacturer: body.manufacturer || null,
         model_number: body.model_number || null,

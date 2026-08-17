@@ -22,6 +22,9 @@ later resubmission brings it back. Behaviour:
 The image field carries "?v=<timestamp>" so a replaced photo shows up on
 devices instead of a cached copy. The script is idempotent: re-running with
 no newer events produces no changes.
+
+Parts used on more than one machine carry "additional_cost_centers"; the key
+is written only when non-empty, so parts without extras are left untouched.
 """
 
 import glob
@@ -48,6 +51,26 @@ FIELDS = [
     "description",
     "cost_center_code",
 ]
+
+
+def clean_additional_ccs(rec, primary):
+    """
+    Extra cost centers a part is also used on.
+
+    Kept out of FIELDS on purpose: the key is only written when there is
+    something in it, so parts that never had extra cost centers stay exactly
+    as they are instead of gaining an empty/null field (which would also make
+    every such part look "updated" on every run).
+    """
+    raw = rec.get("additional_cost_centers") or []
+    if isinstance(raw, str):
+        raw = [raw]
+    out = []
+    for item in raw:
+        cc = str(item or "").strip()
+        if cc and cc != primary and cc not in out:
+            out.append(cc)
+    return out
 
 
 def event_ts(json_file):
@@ -144,6 +167,9 @@ def main():
         if sap in by_sap:
             # Existing part: apply the latest submission (fields + photo).
             entry = {key: rec.get(key) for key in FIELDS}
+            extra_ccs = clean_additional_ccs(rec, entry.get("cost_center_code"))
+            if extra_ccs:
+                entry["additional_cost_centers"] = extra_ccs
             image_field = copy_photo(rec, sap, add_ts) or by_sap[sap].get("image")
             if image_field:
                 entry["image"] = image_field
@@ -155,6 +181,9 @@ def main():
         else:
             # New part: add the full record.
             entry = {key: rec.get(key) for key in FIELDS}
+            extra_ccs = clean_additional_ccs(rec, entry.get("cost_center_code"))
+            if extra_ccs:
+                entry["additional_cost_centers"] = extra_ccs
             image_field = copy_photo(rec, sap, add_ts)
             if image_field:
                 entry["image"] = image_field
