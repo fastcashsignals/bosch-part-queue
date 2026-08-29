@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610001571",
+  "name": "Sensor IFM IFS204",
+  "category": "RSB Punch/Grind/Sand/Stamping",
+  "cost_center_code": "000085C216",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-26-G06",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Sensor IFM IFS204",
+  "submitted_at": "2026-08-29T13:55:24.665Z",
+  "image_path": "submissions/images/1788011723668_3610001571.jpg"
+}
