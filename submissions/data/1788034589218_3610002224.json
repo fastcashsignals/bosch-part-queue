@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002224",
+  "name": "Lubricant OEMETA HYCUT ET6",
+  "category": "RSB Punch/Grind/Sand/Stamping",
+  "cost_center_code": "000085C216",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "05-05-105",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Lubricant OEMETA HYCUT ET6",
+  "submitted_at": "2026-08-29T20:16:30.208Z",
+  "image_path": "submissions/images/1788034589218_3610002224.jpg"
+}
