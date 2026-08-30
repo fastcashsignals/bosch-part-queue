@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004756",
+  "name": "Seal Ring Ink Cup",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "01-25-J07",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Seal Ring Ink Cup",
+  "submitted_at": "2026-08-30T06:07:30.324Z",
+  "image_path": "submissions/images/1788070049469_3610004756.jpg"
+}
