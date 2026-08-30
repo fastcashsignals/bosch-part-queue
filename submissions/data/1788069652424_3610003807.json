@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003807",
+  "name": "Cup Marking Ink",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "01-43-J01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Cup Marking Ink",
+  "submitted_at": "2026-08-30T06:00:53.202Z",
+  "image_path": "submissions/images/1788069652424_3610003807.jpg"
+}
