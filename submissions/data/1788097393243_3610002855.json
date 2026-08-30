@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002855",
+  "name": "Floor sticker Hazard",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C220"
+  ],
+  "bin": "01-35-I02 / 03-32-A01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Floor sticker Hazard",
+  "submitted_at": "2026-08-30T13:43:14.058Z",
+  "image_path": "submissions/images/1788097393243_3610002855.jpg"
+}
