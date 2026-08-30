@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003503",
+  "name": "ear plugs with cords",
+  "category": "Direct - General",
+  "cost_center_code": "000085C082",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-35-B01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "ear plugs with cords",
+  "submitted_at": "2026-08-30T12:30:00.774Z",
+  "image_path": null
+}
