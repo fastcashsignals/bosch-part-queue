@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003791",
+  "name": "Screen 7” CSB Framing",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "03-12-202",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Screen 7” CSB Framing",
+  "submitted_at": "2026-08-30T05:57:53.342Z",
+  "image_path": "submissions/images/1788069472579_3610003791.jpg"
+}
