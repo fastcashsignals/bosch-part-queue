@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610007182",
+  "name": "PN-HY force cylinder 1.5 to 1 20kHz Boos",
+  "category": "CSB Packaging Clamshell",
+  "cost_center_code": "000085C313",
+  "additional_cost_centers": [
+    "000085C311"
+  ],
+  "bin": "02-22-E01 / 02-22-F01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "PN-HY force cylinder 1.5 to 1 20kHz Boos",
+  "submitted_at": "2026-08-30T13:23:32.550Z",
+  "image_path": "submissions/images/1788096211808_3610007182.jpg"
+}
