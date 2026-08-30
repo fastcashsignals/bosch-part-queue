@@ -125,7 +125,16 @@ def copy_photo(rec, sap, ts):
         return None
     ext = os.path.splitext(src_img)[1] or ".jpg"
     dst_rel = f"images/{sap}{ext}"
-    shutil.copyfile(src_img, os.path.join(SCOUT, dst_rel))
+    dst_abs = os.path.join(SCOUT, dst_rel)
+    # Drop any earlier photo for this part saved under a different extension,
+    # or a PNG placeholder would sit around forever once a JPEG replaces it.
+    for stale in glob.glob(os.path.join(SCOUT_IMAGES, sap + ".*")):
+        if os.path.abspath(stale) != os.path.abspath(dst_abs):
+            try:
+                os.remove(stale)
+            except OSError:
+                pass
+    shutil.copyfile(src_img, dst_abs)
     return f"{dst_rel}?v={ts}"
 
 
