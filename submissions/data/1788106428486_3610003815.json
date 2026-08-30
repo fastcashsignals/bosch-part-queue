@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003815",
+  "name": "Chemicals ultrasonic Medic7047",
+  "category": "RSB Ultrasonic Cleaner",
+  "cost_center_code": "000085C230",
+  "additional_cost_centers": [
+    "000085C220"
+  ],
+  "bin": "04-03-102",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Chemicals ultrasonic Medic7047",
+  "submitted_at": "2026-08-30T16:13:49.283Z",
+  "image_path": "submissions/images/1788106428486_3610003815.jpg"
+}
