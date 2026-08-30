@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610007183",
+  "name": "Transducer Super 20 kHz 5000 W",
+  "category": "CSB Packaging Clamshell",
+  "cost_center_code": "000085C313",
+  "additional_cost_centers": [
+    "000085C311"
+  ],
+  "bin": "02-22-F01 / 02-22-A01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Transducer Super 20 kHz 5000 W",
+  "submitted_at": "2026-08-30T13:23:58.788Z",
+  "image_path": "submissions/images/1788096237904_3610007183.jpg"
+}
