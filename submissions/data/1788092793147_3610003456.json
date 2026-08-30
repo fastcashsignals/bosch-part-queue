@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003456",
+  "name": "Drum Closed 55 Gal Lined",
+  "category": "Direct - General",
+  "cost_center_code": "000085C082",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "00-00-000",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Drum Closed 55 Gal Lined",
+  "submitted_at": "2026-08-30T12:26:34.001Z",
+  "image_path": "submissions/images/1788092793147_3610003456.jpg"
+}
