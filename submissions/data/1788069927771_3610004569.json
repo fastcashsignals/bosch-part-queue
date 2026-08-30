@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004569",
+  "name": "Tape Duct Gorilla",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C218"
+  ],
+  "bin": "01-06-K01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tape Duct Gorilla",
+  "submitted_at": "2026-08-30T06:05:28.899Z",
+  "image_path": "submissions/images/1788069927771_3610004569.jpg"
+}
