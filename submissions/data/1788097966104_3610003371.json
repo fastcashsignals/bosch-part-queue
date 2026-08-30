@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003371",
+  "name": "Coolant additive Grotan Biocide",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C216"
+  ],
+  "bin": "03-06-101",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Coolant additive Grotan Biocide",
+  "submitted_at": "2026-08-30T13:52:46.872Z",
+  "image_path": "submissions/images/1788097966104_3610003371.jpg"
+}
