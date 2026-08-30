@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002449",
+  "name": "Tape 2 X 1000 3M MACHINE",
+  "category": "CSB Packaging Ring Pack",
+  "cost_center_code": "000085C312",
+  "additional_cost_centers": [
+    "000085C311"
+  ],
+  "bin": "03-12-301",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tape 2 X 1000 3M MACHINE",
+  "submitted_at": "2026-08-30T13:43:57.533Z",
+  "image_path": "submissions/images/1788097436840_3610002449.jpg"
+}
