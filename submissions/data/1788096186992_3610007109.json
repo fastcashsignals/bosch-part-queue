@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610007109",
+  "name": "Screw Dukane Stud",
+  "category": "CSB Packaging Clamshell",
+  "cost_center_code": "000085C313",
+  "additional_cost_centers": [
+    "000085C220"
+  ],
+  "bin": "02-04-F02",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Screw Dukane Stud",
+  "submitted_at": "2026-08-30T13:23:07.871Z",
+  "image_path": "submissions/images/1788096186992_3610007109.jpg"
+}
