@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003503",
+  "name": "ear plugs with cords",
+  "category": "RSB Punch/Grind/Sand/Stamping",
+  "cost_center_code": "000085C216",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-35-B01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "ear plugs with cords",
+  "submitted_at": "2026-08-30T12:01:06.489Z",
+  "image_path": "submissions/images/1788091265638_3610003503.jpg"
+}
