@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002788",
+  "name": "Filter 1.3X13.1MM FES PA2",
+  "category": "RSB Punch/Grind/Sand/Stamping",
+  "cost_center_code": "000085C216",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "05-01-305",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Filter 1.3X13.1MM FES PA2",
+  "submitted_at": "2026-08-30T10:38:00.483Z",
+  "image_path": "submissions/images/1788086279643_3610002788.jpg"
+}
