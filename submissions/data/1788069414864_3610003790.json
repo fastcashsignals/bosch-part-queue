@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003790",
+  "name": "Plate Etch Poly D0724-CAN",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "03-12-2A6",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Plate Etch Poly D0724-CAN",
+  "submitted_at": "2026-08-30T05:56:55.683Z",
+  "image_path": "submissions/images/1788069414864_3610003790.jpg"
+}
