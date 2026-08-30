@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003500",
+  "name": "Sticker Chemical labels",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C306"
+  ],
+  "bin": "03-32-E05 / 01-35-F01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Sticker Chemical labels",
+  "submitted_at": "2026-08-30T13:55:13.902Z",
+  "image_path": "submissions/images/1788098113104_3610003500.jpg"
+}
