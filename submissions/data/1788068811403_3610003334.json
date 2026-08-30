@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003334",
+  "name": "Pad K117W25-1",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "03-13-201",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Pad K117W25-1",
+  "submitted_at": "2026-08-30T05:46:52.145Z",
+  "image_path": "submissions/images/1788068811403_3610003334.jpg"
+}
