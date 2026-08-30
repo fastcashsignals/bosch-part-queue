@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004630",
+  "name": "Steel Ring Ink Well PA3",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C310"
+  ],
+  "bin": "02-21-A01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Steel Ring Ink Well PA3",
+  "submitted_at": "2026-08-30T06:06:26.652Z",
+  "image_path": "submissions/images/1788069985907_3610004630.jpg"
+}
