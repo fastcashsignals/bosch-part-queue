@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003827",
+  "name": "Rubber Profile Printing Squeegee",
+  "category": "CSB Marking",
+  "cost_center_code": "000085C311",
+  "additional_cost_centers": [
+    "000085C306"
+  ],
+  "bin": "01-43-H03",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Rubber Profile Printing Squeegee",
+  "submitted_at": "2026-08-30T06:02:57.942Z",
+  "image_path": "submissions/images/1788069777091_3610003827.jpg"
+}
