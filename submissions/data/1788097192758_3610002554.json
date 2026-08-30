@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002554",
+  "name": "Abrasive product SCOTCH 7000000728",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "03-32-I11 / 01-06-K02",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Abrasive product SCOTCH 7000000728",
+  "submitted_at": "2026-08-30T13:39:53.691Z",
+  "image_path": "submissions/images/1788097192758_3610002554.jpg"
+}
