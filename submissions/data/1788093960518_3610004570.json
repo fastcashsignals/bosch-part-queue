@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004570",
+  "name": "Tape Electrical Tape",
+  "category": "RSB Punch/Grind/Sand/Stamping",
+  "cost_center_code": "000085C216",
+  "additional_cost_centers": [
+    "000085C218"
+  ],
+  "bin": "03-32-H07 / 01-06-J07",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tape Electrical Tape",
+  "submitted_at": "2026-08-30T12:46:01.295Z",
+  "image_path": "submissions/images/1788093960518_3610004570.jpg"
+}
