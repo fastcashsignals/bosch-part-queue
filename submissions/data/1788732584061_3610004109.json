@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004109",
+  "name": "Control Valve Flow Control valve Z",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-42-L06",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Control Valve Flow Control valve Z",
+  "submitted_at": "2026-09-06T22:09:44.971Z",
+  "image_path": "submissions/images/1788732584061_3610004109.jpg"
+}
