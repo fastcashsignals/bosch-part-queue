@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004740",
+  "name": "Cleaner SC-200 Cleaner",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "05-04-102",
+  "manufacturer": "Webb Chemical & Paper Co., Inc",
+  "model_number": "SC-200",
+  "description": "Cleaner SC-200 Cleaner",
+  "submitted_at": "2026-09-06T16:41:52.270Z",
+  "image_path": "submissions/images/1788712911470_3610004740.jpg"
+}
