@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003951",
+  "name": "Shim ring Rotary table",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C220"
+  ],
+  "bin": "01-42-K17",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Shim ring Rotary table",
+  "submitted_at": "2026-09-06T19:48:44.882Z",
+  "image_path": "submissions/images/1788724123829_3610003951.jpg"
+}
