@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610005452",
+  "name": "Battery CR2032 LI",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-06-J05 / 03-32-F04",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Battery CR2032 LI",
+  "submitted_at": "2026-09-06T22:22:33.564Z",
+  "image_path": "submissions/images/1788733352799_3610005452.jpg"
+}
