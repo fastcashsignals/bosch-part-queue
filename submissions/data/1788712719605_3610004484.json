@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004484",
+  "name": "Tooling W601105481",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C216"
+  ],
+  "bin": "01-41-A10",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tooling W601105481",
+  "submitted_at": "2026-09-06T16:38:40.325Z",
+  "image_path": "submissions/images/1788712719605_3610004484.jpg"
+}
