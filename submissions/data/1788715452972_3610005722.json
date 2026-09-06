@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610005722",
+  "name": "Aluminum Tubing Framing Ext:15ser.4F",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C216"
+  ],
+  "bin": "03-11-204",
+  "manufacturer": "Grainger",
+  "model_number": "804TC0",
+  "description": "Aluminum Tubing Framing Ext:15ser.4F",
+  "submitted_at": "2026-09-06T17:24:13.749Z",
+  "image_path": "submissions/images/1788715452972_3610005722.jpg"
+}
