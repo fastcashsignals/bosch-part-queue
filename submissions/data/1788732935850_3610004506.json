@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610004506",
+  "name": "Pneumatic connector 4mm 90 Fitting",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "01-43-F02",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Pneumatic connector 4mm 90 Fitting",
+  "submitted_at": "2026-09-06T22:15:36.570Z",
+  "image_path": "submissions/images/1788732935850_3610004506.jpg"
+}
