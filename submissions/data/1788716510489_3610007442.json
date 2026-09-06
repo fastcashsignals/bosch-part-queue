@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610007442",
+  "name": "Gripper PGN Plus P64",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "02-23-F03 / 03-29-D03",
+  "manufacturer": "SCHUNK",
+  "model_number": "0318496 PGN-PLUS-P 64-1",
+  "description": "Gripper PGN Plus P64",
+  "submitted_at": "2026-09-06T17:41:51.209Z",
+  "image_path": "submissions/images/1788716510489_3610007442.jpg"
+}
