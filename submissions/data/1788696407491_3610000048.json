@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610000048",
+  "name": "Wipe Sanitizing Pre-Moist",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C221"
+  ],
+  "bin": "03-01-107",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Wipe Sanitizing Pre-Moist",
+  "submitted_at": "2026-09-06T12:06:48.356Z",
+  "image_path": "submissions/images/1788696407491_3610000048.jpg"
+}
