@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003476",
+  "name": "push-in L-fitting GRLA-M5-QS-4-D",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-42-G02",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "push-in L-fitting GRLA-M5-QS-4-D",
+  "submitted_at": "2026-09-06T19:13:53.304Z",
+  "image_path": "submissions/images/1788722032462_3610003476.jpg"
+}
