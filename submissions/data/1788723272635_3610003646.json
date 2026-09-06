@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003646",
+  "name": "Tool Magnet Telescopic",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-06-D06 / 03-32-H06",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tool Magnet Telescopic",
+  "submitted_at": "2026-09-06T19:34:33.575Z",
+  "image_path": "submissions/images/1788723272635_3610003646.jpg"
+}
