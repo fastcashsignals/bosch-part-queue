@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003634",
+  "name": "Tool Torque Driver",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-06-A03 / 03-32-I03",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tool Torque Driver",
+  "submitted_at": "2026-09-06T19:29:13.639Z",
+  "image_path": "submissions/images/1788722952904_3610003634.jpg"
+}
