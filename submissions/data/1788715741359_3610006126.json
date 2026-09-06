@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610006126",
+  "name": "Cable M12 Contact 04010076",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C216"
+  ],
+  "bin": "02-34-A01",
+  "manufacturer": "Sistech SRL",
+  "model_number": "04010076",
+  "description": "Cable M12 Contact 04010076",
+  "submitted_at": "2026-09-06T17:29:02.404Z",
+  "image_path": "submissions/images/1788715741359_3610006126.jpg"
+}
