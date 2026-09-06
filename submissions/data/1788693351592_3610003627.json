@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003627",
+  "name": "Filter Ultrasonic(90 MICRO)",
+  "category": "RSB Ultrasonic Cleaner",
+  "cost_center_code": "000085C230",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "03-07-403",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Filter Ultrasonic(90 MICRO)",
+  "submitted_at": "2026-09-06T11:15:52.509Z",
+  "image_path": "submissions/images/1788693351592_3610003627.jpg"
+}
