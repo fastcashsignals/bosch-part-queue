@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610001771",
+  "name": "Stretch film 14.5X1476'",
+  "category": "RSB TC/Wash/Temper/SS",
+  "cost_center_code": "000085C217",
+  "additional_cost_centers": [
+    "000085C216"
+  ],
+  "bin": "03-13-302",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Stretch film 14.5X1476'",
+  "submitted_at": "2026-09-06T14:13:05.232Z",
+  "image_path": "submissions/images/1788703984256_3610001771.jpg"
+}
