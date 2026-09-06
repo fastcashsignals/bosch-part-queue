@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003353",
+  "name": "Gripper Unit CERAMIC BRAZING",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "01-24-O05",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Gripper Unit CERAMIC BRAZING",
+  "submitted_at": "2026-09-06T19:01:16.873Z",
+  "image_path": "submissions/images/1788721276130_3610003353.jpg"
+}
