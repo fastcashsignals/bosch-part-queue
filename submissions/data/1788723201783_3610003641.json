@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003641",
+  "name": "Tool 8x10 Wrench",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-06-D08 / 03-32-I10",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tool 8x10 Wrench",
+  "submitted_at": "2026-09-06T19:33:22.611Z",
+  "image_path": "submissions/images/1788723201783_3610003641.jpg"
+}
