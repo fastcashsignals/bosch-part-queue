@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003630",
+  "name": "Tool 8mm Allen Key",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-06-D05 / 03-32-I07",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Tool 8mm Allen Key",
+  "submitted_at": "2026-09-06T19:27:38.009Z",
+  "image_path": "submissions/images/1788722857200_3610003630.jpg"
+}
