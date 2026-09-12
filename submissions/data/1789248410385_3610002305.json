@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002305",
+  "name": "Diaphragm Pump",
+  "category": "CSB Coating/Phosphate",
+  "cost_center_code": "000085C308",
+  "additional_cost_centers": [
+    "000085C218"
+  ],
+  "bin": "03-01-301",
+  "manufacturer": "Wagner",
+  "model_number": "#U550.STSS7-A",
+  "description": "Circulating pump for paint system",
+  "submitted_at": "2026-09-12T21:26:50.385Z",
+  "image_path": null
+}
