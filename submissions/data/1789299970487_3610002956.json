@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002956",
+  "name": "Support Plate Tip 2714MBG147",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-42-M01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Support Plate Tip 2714MBG147",
+  "submitted_at": "2026-09-13T11:46:11.478Z",
+  "image_path": "submissions/images/1789299970487_3610002956.jpg"
+}
