@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610003133",
+  "name": "Wire Pin Spiral Tip Cleaning",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "01-06-F01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Wire Pin Spiral Tip Cleaning",
+  "submitted_at": "2026-09-13T11:51:44.524Z",
+  "image_path": "submissions/images/1789300303662_3610003133.jpg"
+}
