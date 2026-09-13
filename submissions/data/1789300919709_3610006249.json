@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610006249",
+  "name": "Compressed-Air Line 4mm Air Line",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C217"
+  ],
+  "bin": "03-06-306",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Compressed-Air Line 4mm Air Line",
+  "submitted_at": "2026-09-13T12:02:00.558Z",
+  "image_path": "submissions/images/1789300919709_3610006249.jpg"
+}
