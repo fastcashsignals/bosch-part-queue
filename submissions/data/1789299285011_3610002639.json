@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002639",
+  "name": "Linear Plain Bearing BRAZER (small)",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C309"
+  ],
+  "bin": "01-42-H02",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Linear Plain Bearing BRAZER (small)",
+  "submitted_at": "2026-09-13T11:34:45.752Z",
+  "image_path": "submissions/images/1789299285011_3610002639.jpg"
+}
