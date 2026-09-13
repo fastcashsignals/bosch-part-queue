@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002479",
+  "name": "Isopropyl Alcohol 1-GAL",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C311"
+  ],
+  "bin": "02-00-CAB",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Isopropyl Alcohol 1-GAL",
+  "submitted_at": "2026-09-13T11:22:11.860Z",
+  "image_path": "submissions/images/1789298531126_3610002479.jpg"
+}
