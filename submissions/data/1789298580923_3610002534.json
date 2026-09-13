@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610002534",
+  "name": "Adhesive LOCTITE 243",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C218"
+  ],
+  "bin": "02-00-CAB",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Adhesive LOCTITE 243",
+  "submitted_at": "2026-09-13T11:23:02.075Z",
+  "image_path": "submissions/images/1789298580923_3610002534.jpg"
+}
