@@ -1,0 +1,15 @@
+{
+  "sap_id": "3610005585",
+  "name": "Connector M4250001A003PX043405",
+  "category": "CSB Brazing",
+  "cost_center_code": "000085C306",
+  "additional_cost_centers": [
+    "000085C308"
+  ],
+  "bin": "02-05-D01",
+  "manufacturer": null,
+  "model_number": null,
+  "description": "Connector M4250001A003PX043405",
+  "submitted_at": "2026-09-13T11:55:34.500Z",
+  "image_path": "submissions/images/1789300533763_3610005585.jpg"
+}
