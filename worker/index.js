@@ -101,12 +101,51 @@ function normalizeAdditionalCostCenters(raw, primary) {
   return out;
 }
 
+/**
+ * Is the GitHub token still good?
+ *
+ * An expired token is otherwise invisible: it breaks nothing until a tech
+ * submits, and produces no commit and no workflow run to notice. One cheap
+ * authenticated read gives a monitor something to watch that fails the same
+ * way a real submission would.
+ */
+async function checkGithubAuth(env) {
+  if (!env.GITHUB_TOKEN) return { ok: false, reason: 'no_token' };
+  try {
+    const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}`, {
+      headers: {
+        'Authorization': `token ${env.GITHUB_TOKEN}`,
+        'Accept': 'application/vnd.github+json',
+        'X-GitHub-Api-Version': '2022-11-28',
+        'User-Agent': 'bosch-part-queue-worker'
+      }
+    });
+    if (res.status === 401) return { ok: false, reason: 'token_rejected' };
+    if (res.status === 403) return { ok: false, reason: 'token_forbidden' };
+    if (!res.ok) return { ok: false, reason: `github_${res.status}` };
+    return { ok: true };
+  } catch (e) {
+    return { ok: false, reason: 'github_unreachable' };
+  }
+}
+
 export default {
   async fetch(request, env, ctx) {
     const cors = corsHeaders(request, env);
 
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: cors });
+    }
+
+    // GET /?health=1 — for the scheduled pipeline check. Reports only whether
+    // submissions would work right now; never echoes the token or its value.
+    if (request.method === 'GET' && new URL(request.url).searchParams.has('health')) {
+      const auth = await checkGithubAuth(env);
+      return json(
+        { service: 'bosch-part-queue', submissions_working: auth.ok, reason: auth.reason || null },
+        auth.ok ? 200 : 503,
+        cors
+      );
     }
 
     if (request.method !== 'POST') {

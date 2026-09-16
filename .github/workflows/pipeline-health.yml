@@ -1,0 +1,32 @@
+name: Pipeline health
+
+# Fails when techs cannot submit, or when submissions are not reaching the
+# catalog — a failed scheduled workflow is what GitHub emails the owner about.
+# All the logic lives in scripts/pipeline_health.py so it can be run and tested
+# outside of Actions; run it locally the same way this job does.
+#
+# Quiet is not a failure: the catalog was completed on 2026-09-13, so stretches
+# with no submissions are normal and never raise an alert on their own.
+
+on:
+  schedule:
+    # 13:00 UTC on weekdays — 8am Central in summer, 7am in winter.
+    - cron: '0 13 * * 1-5'
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the submission pipeline
+        env:
+          WORKER_URL: https://bosch-part-queue.fastcashsignals.workers.dev
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SCOUT_TOKEN: ${{ secrets.SCOUT_REPO_TOKEN }}
+        run: python3 scripts/pipeline_health.py
