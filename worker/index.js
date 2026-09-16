@@ -49,9 +49,29 @@ async function githubPut(path, contentBase64, message, env) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error(JSON.stringify({ status: res.status, body: err }));
+    // Keep the GitHub status on the error so the handler can turn an expired
+    // token into something a tech on the floor can act on, instead of showing
+    // them raw API JSON they have no way to read.
+    const e = new Error(err.message || `GitHub responded ${res.status}`);
+    e.githubStatus = res.status;
+    throw e;
   }
   return res.json();
+}
+
+/**
+ * Turn a failure into a message meant for whoever is holding the phone.
+ *
+ * 401/403 from GitHub means the Worker's own GITHUB_TOKEN has expired or lost
+ * access — nothing the tech did, and nothing they can fix by resubmitting, so
+ * say so and name who to tell. Everything else keeps its real message.
+ */
+function submitterMessage(e) {
+  if (e.githubStatus === 401 || e.githubStatus === 403) {
+    return 'Submissions are temporarily down — the app needs a new access key. ' +
+           'Your photo was NOT saved. Please tell Shannon, then try again later.';
+  }
+  return e.message || 'Internal error';
 }
 
 function slugify(sap) {
@@ -161,7 +181,11 @@ export default {
       return json({ success: true, sap_id: sapId, paths: { image: imagePath, data: jsonPath } }, 200, cors);
 
     } catch (e) {
-      return json({ error: e.message || 'Internal error' }, 500, cors);
+      // 503 rather than 500 for an expired token: the request was fine, the
+      // service is what is unavailable, and it is worth telling apart in logs.
+      const authFailed = e.githubStatus === 401 || e.githubStatus === 403;
+      console.error('Submission failed', e.githubStatus || '', e.message);
+      return json({ error: submitterMessage(e) }, authFailed ? 503 : 500, cors);
     }
   }
 };
